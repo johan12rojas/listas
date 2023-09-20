@@ -1,0 +1,103 @@
+
+package pruebas;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Pruebas {
+    
+    /* -->LOS PRIMEROS TRES CODIGOS NOS OFRECEN 3 MANERAS DIFERENTES DE PASAR INFORMACION DE UNA LISTA A OTRA:
+    
+    - LA FUNCION CLONE NOS CLONA DIRECTAMENTE LA LISTA ORIGINAL A OTRA LISTA;
+    - LA FUNCION ADD NOS PASA LOS ELEMENTOS DE LA LISTA ORIGINAL A OTRA LISTA2 SIN ALTERAR LOS ANTERIORES ELEMENTOS DE LA LISTA2;
+    - EN EL TERCER CODIGO INSERTAMOS DIRECTAMENTE EN EL CONSTRUCTOR DE LA LISTA NUEVA LA LISTA ORIGINAL, ASI TENDREMOS DOS LISTAS IGUALES, LA ORIGINAL Y LA COPIA;
+    
+    -EN EL 4 CODIGO PASAREMOS DE UNA LISTA A UN ARRAY, PARA SABER EL TAMAÑO DEL ARRAY USAREMOS EL .size() UNA VEZ CONSTRUIDO EL ARRAY
+    USAMOS LA FUNCION toArray() Y ASI OBTENDREMOS UN ARRAY DE NUESTRA LISTA ORIGINAL.
+    
+    */
+
+    public static void main(String[] args) {
+        
+        //--------------------------------------------------------------------------------------------------------------------------------------------------
+        //INFO GENERAL
+        
+        ArrayList<String> lista_ciudades=new ArrayList<>();
+        lista_ciudades.add("MACHALA");
+        lista_ciudades.add("BARRANQUILLA");
+        lista_ciudades.add("BARCELONA");
+        lista_ciudades.add("MADRID");
+        lista_ciudades.add("LIMA");
+        
+        //1 FUNCION DE LISTAS CLONE
+        System.out.println("\n--------------------------");
+        System.out.println("\n-------> USO DEL CLONE <-------");
+        ArrayList<String>lis_copia=(ArrayList<String>)lista_ciudades.clone();
+        lis_copia.forEach(System.out::println);
+        
+        lista_ciudades.forEach(System.out::println);
+        System.out.println("\n--------------------------");
+        
+        
+        //2 FUNCION DE LISTAS ADD
+        System.out.println("\n-------> USO DEL ADD <-------");
+        ArrayList<String>lis_copia2=new ArrayList<>();
+        lis_copia2.addAll(lista_ciudades);
+        
+        lis_copia2.forEach(System.out::println);
+        System.out.println("\n--------------------------");
+        
+        //3 FUNCION DE LISTAS 
+        System.out.println("\n-------> COPIAR DIRECTAMENTE UNA LISTA EN OTRA <-------");
+        ArrayList<String>lis_copia3=new ArrayList<>(lista_ciudades);
+        lis_copia3.forEach(System.out::println);
+        System.out.println("\n--------------------------");
+        
+        //3b TOARRAY 
+        String[] newlist = new String[lista_ciudades.size()];
+        newlist = lista_ciudades.toArray(newlist);
+        
+        System.out.println("\n-------> LIST TO ARRAY <-------");
+        for (String element : newlist)
+            System.out.print("["+element+"]");
+        System.out.println("\n--------------------------");
+        
+        //--------------------------------------------------------------------------------------------------------------------------------------------------
+        
+        //1 FUNCION RETAINALL
+        
+        System.out.println("***********************************************************************************************************");
+        ArrayList<String> ciudades2=new ArrayList();
+        ciudades2.add("BARCELONA");ciudades2.add("LIMA");ciudades2.add("PARIS");
+        
+        lista_ciudades.retainAll(ciudades2);
+        
+        lista_ciudades.forEach(System.out::println);
+        
+        System.out.println("\nLo que hemos hecho con retainAll() en el ejemplo anterior es eliminar y mantener de la lista primera \nlos elementos de la lista segunda.");
+        System.out.println("\n***********************************************************************************************************");
+        
+        //2 FUNCION COLLECTIONS:SORT
+
+        List<Integer> numeros = new ArrayList(List.of(3,2,4,1,-2));
+        System.out.println(numeros);
+        Collections.sort(numeros);
+        System.out.println(numeros);
+        System.out.println("\nLo que hemos hecho con Collections.sort() en el ejemplo anterior es ordenar una lista de numeros en orden ascendente");
+        System.out.println("\n***********************************************************************************************************");
+        
+        //3 FUNCION ISEMPTY
+        
+        System.out.println("\nVERIFICAR SI LA LISTA ESTA VACIA O NO");
+        System.out.println(lista_ciudades.isEmpty());
+        
+        System.out.println("\nEN ESTE CASO REVISAREMOS UNA LISTA QUE ESTA VACIA POR ENDE NOS ARROJARA TRUE");
+        ArrayList<String>listaVacia=new ArrayList<>();
+        System.out.println(listaVacia.isEmpty());
+        
+        System.out.println("\n***********************************************************************************************************");
+        
+    }   
+    
+}
